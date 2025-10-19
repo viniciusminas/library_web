@@ -4,8 +4,8 @@ type Props = {
   open: boolean;
   livro?: string;
   pessoa?: string;
-  atrasoDias?: number;     // opcional, se já calcular no front
-  multa?: number;          // opcional, se já calcular no front
+  atrasoDias?: number;    
+  multa?: number;          
   loading?: boolean;
   onClose: () => void;
   onConfirm: () => void;   // chama a API de devolver

@@ -42,7 +42,7 @@ export default function MultasConsultar() {
 
       const payload: Partial<MultasAPI.NovaMulta> = {
         pessoaId,                                   // number garantido
-        reservaId: m.reserva?.id ?? undefined,      // nunca envie null
+        reservaId: m.reserva?.id ?? undefined,      // nunca enviar null
         valor: m.valor,
         descricao: m.descricao ?? "",
         dataMulta: m.dataMulta,

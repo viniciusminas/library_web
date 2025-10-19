@@ -21,10 +21,10 @@
   --shadow:0 10px 30px rgba(0,0,0,.25);
 
   /* NAV sizes (1 única fonte da verdade) */
-  --nav-h: 40px;         /* altura exata */
-  --nav-pad-x: 14px;     /* padding lateral */
-  --nav-gap: 8px;        /* gap entre ícone/label */
-  --nav-icon: 18px;      /* tamanho do emoji/SVG */
+  --nav-h: 40px;         
+  --nav-pad-x: 14px;     
+  --nav-gap: 8px;        
+  --nav-icon: 18px;     
 }
 
 /* ========== RESET ========== */
@@ -69,7 +69,6 @@ body{
 }
 .navlinks{ display:flex; gap:14px; align-items:center }
 
-/* Botão/link base da navbar — MESMA MARCAÇÃO p/ todos */
 .navlink{
   display:inline-flex;
   align-items:center;
@@ -81,10 +80,10 @@ body{
   background:transparent;
   color:var(--muted);
   text-decoration:none;
-  line-height:1;           /* impede “pulo” vertical */
-  font-size:0.96rem;       /* padroniza tamanho */
+  line-height:1;         
+  font-size:0.96rem;   
   cursor:pointer;
-  appearance:none;         /* remove estilos nativos do <button> */
+  appearance:none;  
 }
 .navlink:hover{ color:var(--text); border-color:var(--border); background:rgba(255,255,255,.03) }
 .navlink.active{
@@ -92,7 +91,6 @@ body{
   background:rgba(124,58,237,.15); box-shadow:0 0 0 3px var(--ring)
 }
 
-/* Ícone/emoji SEM baseline (centralizado numa caixa fixa) */
 .nav-ico{
   width:var(--nav-icon);
   height:var(--nav-icon);

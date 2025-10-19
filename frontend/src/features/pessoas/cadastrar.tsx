@@ -27,7 +27,6 @@ export default function PessoasCadastrar(){
     };
     await criarPessoa(payload);
     reset();
-    // opcional: ir direto pra consulta
     nav("/pessoas/consultar");
   }
 

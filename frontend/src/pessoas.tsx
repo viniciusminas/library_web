@@ -8,8 +8,8 @@ import { Pessoa } from "./types/Pessoa";
 const schema = z.object({
   nome: z.string().min(3, "Informe o nome completo"),
   email: z.string().email("E-mail inválido"),
-  tel: z.string().optional(),                 // opcional
-  endereco: z.string().min(3, "Endereço é obrigatório"), // OBRIGATÓRIO
+  tel: z.string().optional(),            
+  endereco: z.string().min(3, "Endereço é obrigatório"),
 });
 type FormData = z.infer<typeof schema>;
 
@@ -42,7 +42,7 @@ export default function PessoasPage() {
         nome: data.nome,
         email: data.email,
         tel: data.tel?.trim() ? data.tel : undefined,
-        endereco: data.endereco,               // obrigatório
+        endereco: data.endereco,              
       };
       await criarPessoa(payload);
       setOk("Usuário cadastrado com sucesso!");

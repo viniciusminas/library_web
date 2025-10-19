@@ -36,7 +36,7 @@ export default function App(){
           <Route path="cadastrar" element={<LivrosCadastrar />} />
         </Route>
 
-        {/* Reservas – somente consultar */}
+        {/* Reservas */}
         <Route path="/reservas" element={<ReservasLayout />}>
           <Route index element={<ReservasConsultar />} />
           <Route path="consultar" element={<ReservasConsultar />} />

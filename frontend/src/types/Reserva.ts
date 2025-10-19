@@ -8,8 +8,8 @@ export interface ReservaDTO {
 
 export interface Reserva {
   id?: number;
-  dataIni?: string;           // ISO
-  dataFim?: string | null;    // devolvida = ISO; em aberto = null
+  dataIni?: string;          
+  dataFim?: string | null; 
   livro?: Livro | null;
   pessoa?: Pessoa | null;
 }

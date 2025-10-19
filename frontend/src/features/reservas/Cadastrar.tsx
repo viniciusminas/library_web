@@ -4,7 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { criarReserva } from "../../services/reservas";
 import { listarLivros } from "../../services/livros";
-import * as PessoasAPI from "../../services/pessoas"; // use o que você já tem
+import * as PessoasAPI from "../../services/pessoas";
 
 const schema = z.object({
   pessoaId: z.string().min(1, "Selecione a pessoa"),
@@ -23,7 +23,7 @@ export default function ReservasCadastrar() {
   useEffect(() => {
     (async () => {
       const [p, l] = await Promise.all([
-        PessoasAPI.listar(),  // já usa no módulo Pessoas
+        PessoasAPI.listar(), 
         listarLivros(),
       ]);
       setPessoas(p);

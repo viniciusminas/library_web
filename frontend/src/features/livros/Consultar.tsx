@@ -30,14 +30,11 @@ export default function LivrosConsultar() {
   const [filtroAno, setFiltroAno] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // reservas abertas (somente no front): conjunto de livroId => reservado
   const [reservadosSet, setReservadosSet] = useState<Set<number>>(new Set());
 
-  // mapa auxiliar: livroId -> { id: pessoaId, nome: pessoaNome } (quem reservou)
   const [reservadoPor, setReservadoPor] =
     useState<Record<number, { id: number; nome: string }>>({});
 
-  // modal de reserva
   const [openModal, setOpenModal] = useState(false);
   const [alvoLivro, setAlvoLivro] = useState<Livro | null>(null);
   const [pessoas, setPessoas] = useState<PessoaPick[]>([]);
@@ -55,7 +52,6 @@ export default function LivrosConsultar() {
       ]);
 
       // Monta um Set com IDs de livros que têm reserva ABERTA (dataFim null/undefined)
-      // e um mapa com o "dono" da reserva para UX/mensagens
       const s = new Set<number>();
       const dono: Record<number, { id: number; nome: string }> = {};
 
@@ -93,7 +89,7 @@ export default function LivrosConsultar() {
     return base;
   }, [lista, filtroTitulo, filtroAutor, filtroAno]);
 
-  // --- reservar: abre modal e carrega pessoas
+  //abre modal e carrega pessoas
   async function abrirModalReserva(l: Livro) {
     try {
       setMsg("");
@@ -119,7 +115,6 @@ export default function LivrosConsultar() {
     }
   }
 
-  // --- confirmar criação da reserva
   async function confirmarReserva() {
     if (!alvoLivro) return;
 
@@ -153,7 +148,7 @@ export default function LivrosConsultar() {
 
       let msgAmigavel = httpStatusMessage(status, backendMsg);
 
-      // Personaliza 409 com o nome de quem já reservou, se soubermos
+      // Personaliza 409
       if (status === 409 && alvoLivro?.id) {
         const dono = reservadoPor[Number(alvoLivro.id)];
         if (dono?.nome) {
@@ -174,7 +169,6 @@ export default function LivrosConsultar() {
     setAlvoLivro(null);
   }
 
-  // excluir livro
   async function excluir(l: Livro) {
     if (!window.confirm(`Excluir o livro "${l.titulo}"?`)) return;
     await LivrosAPI.excluirLivro(Number(l.id));
@@ -266,27 +260,27 @@ export default function LivrosConsultar() {
                         width: "100%",
                         justifyContent: "flex-end",
                         alignItems: "center",
-                        flexWrap: "nowrap",     // impede quebrar linha
-                        whiteSpace: "nowrap",   // garante que os botões não quebrem texto
+                        flexWrap: "nowrap",    
+                        whiteSpace: "nowrap",   
                       }}
                     >
                       <button
                         className="btn btn-ghost"
-                        style={{ minWidth: 80 }}                   // opcional: largura mínima uniforme
+                        style={{ minWidth: 80 }}                 
                         onClick={() => navigate(`/livros/cadastrar?id=${l.id}`)}
                       >
                         Editar
                       </button>
                       <button
                         className="btn btn-danger"
-                        style={{ minWidth: 80 }}                   // opcional
+                        style={{ minWidth: 80 }}                 
                         onClick={() => excluir(l)}
                       >
                         Excluir
                       </button>
                       <button
                         className="btn btn-success"
-                        style={{ minWidth: 90 }}                   // opcional
+                        style={{ minWidth: 90 }}               
                         disabled={reservado}
                         onClick={() => abrirModalReserva(l)}
                         title={reservado ? "Livro já está reservado" : "Reservar"}

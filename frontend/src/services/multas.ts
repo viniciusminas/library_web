@@ -4,10 +4,10 @@ import type { Multa } from "../types/Multa";
 /** payload para criar/atualizar multa */
 export interface NovaMulta {
   pessoaId: number;
-  reservaId?: number;           // use undefined quando não tiver reserva
+  reservaId?: number;
   valor: number;
   descricao: string;
-  dataMulta: string;            // ISO
+  dataMulta: string;  
   pago: boolean;
 }
 
@@ -23,7 +23,7 @@ export async function criarMulta(payload: NovaMulta): Promise<Multa> {
   return data;
 }
 
-/** atualiza multa (patch parcial) */
+/** atualiza multa se necessario*/
 export async function atualizarMulta(
   id: number,
   patch: Partial<NovaMulta>

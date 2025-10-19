@@ -6,7 +6,7 @@ export async function listar(): Promise<Pessoa[]> {
   return data;
 }
 
-// extras (caso alguma tela use)
+// extras (caso alguma outra tela use)
 export async function buscarPessoa(id: number): Promise<Pessoa> {
   const { data } = await api.get<Pessoa>(`/pessoas/${id}`);
   return data;

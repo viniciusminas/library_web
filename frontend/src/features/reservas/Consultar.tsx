@@ -187,7 +187,6 @@ export default function ReservasConsultar() {
 
       await ReservasAPI.devolver(alvo.id);
 
-      // UI otimista
       setLista((prev) => prev.filter((x) => x.id !== alvo.id));
 
       // fecha modal e limpa alvo
@@ -223,7 +222,6 @@ export default function ReservasConsultar() {
 
     await ReservasAPI.cancelar(r.id);
 
-    // UI otimista: remove já
     setLista((prev) => prev.filter((x) => x.id !== r.id));
 
     await carregar();
@@ -300,13 +298,14 @@ export default function ReservasConsultar() {
                     </button>
                   </div>
                 </td>
+
               </tr>
             ))}
           </tbody>
         </table>
       )}
 
-      {/* Modal bonitinho de confirmação */}
+      {/* Modal de confirmação */}
       <ConfirmarDevolucaoModal
         open={devOpen}
         onClose={() => setDevOpen(false)}

@@ -9,8 +9,6 @@ export default function ReservasLayout(){
           Consulte e gerencie as reservas. Para criar uma nova, acesse a página de{" "}
           <NavLink to="/livros" className="navlink">Livros</NavLink> e use o botão <strong>Reservar</strong>.
         </p>
-        {/* Se quiser, pode deixar um CTA direto: */}
-        {/* <NavLink to="/livros" className="btn btn-success">+ Reservar</NavLink> */}
       </section>
 
       <Outlet />

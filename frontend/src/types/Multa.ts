@@ -4,6 +4,6 @@ export interface Multa {
   reserva?: { id?: number; livro?: { titulo?: string } } | null;
   valor: number;
   descricao?: string;
-  dataMulta: string;  // ISO
+  dataMulta: string;
   pago: boolean;
 }

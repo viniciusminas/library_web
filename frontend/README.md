@@ -1,46 +1,122 @@
-# Getting Started with Create React App
+# 📚 Library Web – Sistema de Biblioteca Online
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicação full stack para gerenciamento de biblioteca, permitindo **cadastro de livros, usuários, reservas e controle de multas**.  
+Desenvolvida em **React + TypeScript (frontend)** e **Spring Boot + PostgreSQL (backend)**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Tecnologias Utilizadas
 
-### `npm start`
+### 🔹 Frontend
+- React 18 com TypeScript  
+- React Router DOM  
+- Axios  
+- Bootstrap 5 (estilização)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 🔹 Backend
+- Spring Boot 
+- JPA / Hibernate  
+- PostgreSQL  
+- Flyway (controle de migrações)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+> ℹ️ O backend roda em repositório/projeto separado e expõe a API REST consumida pelo frontend.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🧱 Estrutura do Projeto
 
-### `npm run build`
+```
+frontend/
+├── public/
+├── src/
+│   ├── components/      # Componentes reutilizáveis (Navbar, Modais, etc.)
+│   ├── features/        # Módulos funcionais (livros, pessoas, reservas, multas)
+│   ├── pages/           # Páginas principais
+│   ├── types/           # Tipos e interfaces TypeScript
+│   ├── App.tsx
+│   └── index.tsx
+├── package.json
+└── README.md
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ⚙️ Como Rodar o Projeto Localmente
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🧩 Pré-requisitos
+- Node.js (>= 18)
+- Backend em execução (Spring Boot) expondo a API, por padrão em `http://localhost:8080`
 
-### `npm run eject`
+### ▶️ Passos
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### 1️⃣ Clonar o repositório
+```bash
+git clone https://github.com/viniciusminas/library_web.git
+cd library_web/frontend
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### 2️⃣ Instalar dependências
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### 3️⃣ Configurar a URL da API
+Crie um arquivo `.env` na pasta `frontend` (mesmo nível do `package.json`) com:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+REACT_APP_API_URL=http://localhost:8080
+```
 
-## Learn More
+> Se preferir usar o **proxy do Create React App**, você também pode definir `"proxy": "http://localhost:8080"` no `package.json` e deixar a `baseURL` vazia no Axios.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### 4️⃣ Executar o Frontend
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+A aplicação ficará disponível em:  
+👉 **http://localhost:3000**
+
+---
+
+## API do Backend disponível em: https://github.com/viniciusminas/api_library
+
+## 🧪 Scripts úteis
+
+- `npm start` – roda o app em modo desenvolvimento  
+- `npm run build` – cria o build de produção  
+- `npm test` – executa testes (se configurados)  
+- `npm run lint` – verifica problemas de lint (se configurado)
+
+---
+
+## 🔐 Boas práticas (importante em repositório público)
+
+- **Não** comitar arquivos `.env` com credenciais reais.  
+- Use `.env.example` com chaves “placeholders” para guiar quem for rodar o projeto.
+- Mantenha dependências atualizadas e evite expor tokens/URLs sensíveis no código.
+
+---
+
+## 📸 Preview
+
+| Tela | Descrição |
+|------|-----------|
+| 📘 **Livros** | Cadastro, edição e consulta de livros |
+| 👤 **Pessoas** | Registro de usuários da biblioteca |
+| 📅 **Reservas** | Controle de empréstimos |
+| 💰 **Multas** | Cálculo e baixa de multas |
+
+---
+
+## 🧑‍💻 Autor
+
+**Vinícius Minas**  
+💼 Desenvolvedor de Software  
+🌐 [github.com/viniciusminas](https://github.com/viniciusminas)  
+📧 [viniciusminas@exemplo.com](mailto:viniciusminas@exemplo.com)
+
+---
+
+## 🪶 Licença
+Este projeto é de uso acadêmico e livre para estudo e aprimoramento.

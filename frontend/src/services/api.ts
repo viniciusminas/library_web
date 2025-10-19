@@ -1,12 +1,3 @@
-/*import axios from "axios";
-
-const api = axios.create({
-  baseURL: "http://192.168.0.110:8080", // <<< API do Spring
-  headers: { "Content-Type": "application/json" },
-});
-
-export default api;*/
-
 import axios from "axios";
 
 const api = axios.create({
@@ -15,6 +6,6 @@ const api = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
-export default api;        // <-- default
+export default api; 
 
 
