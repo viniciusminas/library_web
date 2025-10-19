@@ -1,0 +1,212 @@
+/* ========== TOKENS (DARK ONLY) ========== */
+:root{
+  color-scheme: dark;
+
+  --bg:#0f1115;
+  --surface:#161a23;
+  --surface-2:#0e1118;
+  --border:#262b36;
+
+  --text:#e6e9ef;
+  --muted:#a7b0c0;
+
+  --primary:#7c3aed;
+  --primary-600:#6d28d9;
+  --danger:#ef4444;
+
+  --ring: rgba(124,58,237,.35);
+
+  --radius-lg:16px;
+  --radius:10px;
+  --shadow:0 10px 30px rgba(0,0,0,.25);
+
+  /* NAV sizes (1 única fonte da verdade) */
+  --nav-h: 40px;         /* altura exata */
+  --nav-pad-x: 14px;     /* padding lateral */
+  --nav-gap: 8px;        /* gap entre ícone/label */
+  --nav-icon: 18px;      /* tamanho do emoji/SVG */
+}
+
+/* ========== RESET ========== */
+*{ box-sizing:border-box }
+html,body,#root{ height:100% }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Arial;
+  background:
+    radial-gradient(1200px 600px at 70% -10%, rgba(124,58,237,.15), transparent 60%),
+    var(--bg);
+  color:var(--text);
+}
+
+/* ========== LAYOUT ========== */
+.container{ max-width:1100px; margin:0 auto; padding:24px }
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%), var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+/* ========== NAVBAR ========== */
+.navbar{
+  position:sticky; top:0; z-index:10;
+  background:rgba(15,17,21,.6); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.navbar-inner{
+  max-width:1100px; margin:0 auto; padding:12px 24px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.brand{ display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px }
+.brand-badge{
+  width:22px; height:22px; border-radius:6px;
+  background:conic-gradient(from 60deg,var(--primary),#26c6da,#22c55e);
+  box-shadow:0 0 0 2px rgba(255,255,255,.06) inset;
+}
+.navlinks{ display:flex; gap:14px; align-items:center }
+
+/* Botão/link base da navbar — MESMA MARCAÇÃO p/ todos */
+.navlink{
+  display:inline-flex;
+  align-items:center;
+  gap:var(--nav-gap);
+  height:var(--nav-h);
+  padding:0 var(--nav-pad-x);
+  border:1px solid transparent;
+  border-radius:12px;
+  background:transparent;
+  color:var(--muted);
+  text-decoration:none;
+  line-height:1;           /* impede “pulo” vertical */
+  font-size:0.96rem;       /* padroniza tamanho */
+  cursor:pointer;
+  appearance:none;         /* remove estilos nativos do <button> */
+}
+.navlink:hover{ color:var(--text); border-color:var(--border); background:rgba(255,255,255,.03) }
+.navlink.active{
+  color:#fff; border-color:var(--primary);
+  background:rgba(124,58,237,.15); box-shadow:0 0 0 3px var(--ring)
+}
+
+/* Ícone/emoji SEM baseline (centralizado numa caixa fixa) */
+.nav-ico{
+  width:var(--nav-icon);
+  height:var(--nav-icon);
+  font-size:var(--nav-icon);
+  line-height:1;
+  display:grid;
+  place-items:center;
+  flex:0 0 var(--nav-icon);
+}
+.nav-label{ line-height:1 }
+
+/* ========== DROPDOWN (click) ========== */
+.dropdown{ position:relative; display:inline-block }
+.dropdown-menu{
+  position:absolute; top:calc(100% + 8px); left:0;
+  min-width:240px; padding:8px;
+  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  box-shadow:0 12px 30px rgba(0,0,0,.35); display:none; z-index:20;
+}
+.dropdown.open .dropdown-menu{ display:block }
+.dropdown-item{
+  display:block; padding:10px 12px; border-radius:8px;
+  color:var(--text); text-decoration:none; border:1px solid transparent;
+}
+.dropdown-item:hover{ background:rgba(255,255,255,.04); border-color:var(--border) }
+
+/* ========== FORM (inputs/botões) ========== */
+.input, select, textarea{
+  width:100%; padding:10px 12px; border-radius:10px;
+  border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+  outline:none; transition:.15s border, .15s box-shadow, .15s background;
+}
+.input::placeholder{ color:#8f98aa }
+.input:focus, select:focus, textarea:focus{
+  border-color:var(--primary); box-shadow:0 0 0 3px var(--ring)
+}
+label{ display:flex; flex-direction:column; gap:6px; font-size:.95rem; color:#cdd5e0 }
+.help{ color:#ffb4b4 }
+
+/* Botões utilitários do app */
+.btn{
+  appearance:none; border:none; padding:10px 14px; border-radius:10px;
+  cursor:pointer; font-weight:600; line-height:1;
+  transition: filter .15s, transform .06s;
+}
+.btn:hover{ filter:brightness(1.06) }
+.btn:active{ transform:translateY(1px) }
+.btn-sm{ padding:6px 10px; border-radius:8px; font-size:.9rem }
+.btn-ghost{ background:transparent; border:1px solid var(--border); color:var(--text) }
+.btn-primary{ background:linear-gradient(180deg,var(--primary),var(--primary-600)); color:#fff }
+.btn-success{ background:linear-gradient(180deg,#22c55e,#16a34a); color:#fff }
+.btn-warning{ background:linear-gradient(180deg,#f59e0b,#d97706); color:#0b0b0b; font-weight:700 }
+.btn-danger{ background:linear-gradient(180deg,#ef4444,#dc2626); color:#fff }
+
+/* ========== TABLE ========== */
+.table{
+  width:100%; border-collapse:collapse; border:1px solid var(--border);
+  border-radius:14px; overflow:hidden; background:var(--surface);
+}
+.table th, .table td{ padding:12px 10px; text-align:left; border-bottom:1px solid var(--border) }
+.table thead th{ background:#0f1320; color:#cfe0ff; font-weight:700 }
+.table tbody tr:hover{ background:rgba(255,255,255,.03) }
+.table-responsive{ overflow-x:auto }
+.table td > div{ display:flex; gap:8px; flex-wrap:wrap }
+.actions-inline{ display:inline-flex; gap:8px; align-items:center; flex-wrap:wrap }
+
+/* ========== HERO (Home) ========== */
+.hero{
+  min-height:58vh; position:relative; display:grid; place-items:center;
+  background:linear-gradient(rgba(10,12,18,.7), rgba(10,12,18,.8));
+}
+.hero-card{
+  max-width:620px; text-align:center; padding:28px 26px; border-radius:18px;
+  border:1px solid var(--border); background:rgba(12,14,20,.75);
+  box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+.hero h1{ margin:0 0 8px 0; font-size:2.2rem }
+.hero p{ margin:0; color:#cbd5e8 }
+
+/* ========== POPOVER reservar ========== */
+.popover{
+  position:absolute; top:38px; right:0;
+  background:var(--surface);
+  border:1px solid var(--border); border-radius:10px;
+  padding:10px; width:280px; z-index:25;
+  box-shadow:0 10px 24px rgba(0,0,0,.35);
+}
+.popover-actions{ display:flex; gap:8px; margin-top:10px; justify-content:flex-end }
+
+/* ========== MODAL ========== */
+.modal-backdrop{
+  position:fixed; inset:0; z-index:1000;
+  background:rgba(0,0,0,.45);
+  display:flex; align-items:center; justify-content:center;
+}
+.modal{
+  width:min(520px, 92vw);
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:18px;
+  box-shadow:0 24px 60px rgba(0,0,0,.5);
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width:480px){
+  .btn{ padding:8px 10px }
+  .navbar-inner{ padding:10px 16px }
+}
+
+/* ===== Filtros ===== */
+.filters{ display:grid; grid-template-columns:1fr auto; gap:8px; align-items:center }
+.filters .input{ flex:1 1 220px }
+.filters .btn{ flex:0 0 auto }
+@media (min-width:720px){
+  .filters{ grid-template-columns:1fr 1fr auto }
+}
